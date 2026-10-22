@@ -12,7 +12,7 @@ interface SEOProps {
 
 const DEFAULT_TITLE = 'Triforion Technology'
 const DEFAULT_DESC =
-  'Triforion Technology | Studio pengembangan website profesional, aplikasi web custom, dan solusi digital untuk UMKM hingga enterprise.'
+  'Triforion Technology | Software house penyedia pengembangan website profesional, aplikasi web custom, dan solusi digital untuk UMKM hingga enterprise.'
 const DEFAULT_IMAGE = 'https://i.ibb.co.com/FkN6ssgh/logo.webp'
 export const BASE_URL = 'https://triforiontech.pages.dev'
 
