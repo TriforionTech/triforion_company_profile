@@ -118,13 +118,13 @@ export const Pricing: React.FC = () => {
                 </div>
               )}
 
-              <div className="p-5 sm:p-6 pb-4">
+              <div className="p-3 sm:p-3.5 pb-3">
                 {!plan.highlighted && plan.badge && (
-                  <span className="inline-block px-2.5 py-0.5 bg-surface text-text-muted text-[11px] font-semibold rounded-full mb-3">
+                  <span className="inline-block px-2 py-0.5 bg-surface text-text-muted text-[11px] font-semibold rounded-full mb-2.5">
                     {plan.badge}
                   </span>
                 )}
-                {plan.highlighted && <div className="h-4" />}
+                {plan.highlighted && <div className="h-3" />}
 
                 <h3 className="text-base font-bold text-text-primary tracking-tight">
                   {plan.name}
@@ -133,9 +133,9 @@ export const Pricing: React.FC = () => {
                   {plan.desc}
                 </p>
 
-                <div className="mt-4 pt-4 border-t border-border">
+                <div className="mt-3.5 pt-3.5 border-t border-border">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight">
+                    <span className="text-2xl sm:text-[1.65rem] lg:text-[1.75rem] font-extrabold text-text-primary tracking-tight">
                       {plan.price}
                     </span>
                     {plan.period && (
@@ -146,7 +146,7 @@ export const Pricing: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="mt-5 space-y-2.5">
+                <div className="mt-4 space-y-2">
                   <p className="text-xs font-semibold text-text-primary uppercase tracking-wider">
                     Fitur yang didapatkan:
                   </p>
@@ -161,12 +161,12 @@ export const Pricing: React.FC = () => {
                 </div>
               </div>
 
-              <div className="p-5 sm:p-6 pt-0">
+              <div className="p-3 sm:p-3.5 pt-0">
                 <a
                   href={plan.ctaLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-center transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs ${
+                  className={`w-full py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold text-center transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs ${
                     plan.highlighted
                       ? 'bg-cta text-cta-text hover:bg-cta-hover shadow-sm'
                       : 'bg-surface hover:bg-primary-50 text-text-primary hover:text-primary-600 border border-border hover:border-primary-300'
