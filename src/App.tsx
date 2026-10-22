@@ -7,7 +7,6 @@ import { ArticlePage } from './pages/ArticlePage'
 import { CareersPage } from './pages/CareersPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
-// Scroll to top or target hash/state on route changes with resilient resolution
 const ScrollManager: React.FC = () => {
   const location = useLocation()
 
@@ -25,7 +24,6 @@ const ScrollManager: React.FC = () => {
         return false
       }
 
-      // Try immediate scroll if DOM is ready, otherwise retry after mount
       if (!scrollTarget()) {
         const timer = setTimeout(() => {
           scrollTarget()

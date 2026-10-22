@@ -79,10 +79,10 @@ export const Footer: React.FC = () => {
               <ul className="space-y-2">
                 <li>
                   <button
-                    onClick={() => scrollToSection('layanan')}
+                    onClick={() => scrollToSection('proses')}
                     className="text-sm text-footer-text/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0 text-left"
                   >
-                    Tentang Kami
+                    Proses Kerja
                   </button>
                 </li>
                 <li>

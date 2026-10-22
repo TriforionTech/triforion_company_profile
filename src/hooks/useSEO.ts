@@ -12,7 +12,7 @@ interface SEOProps {
 
 const DEFAULT_TITLE = 'Triforion Technology'
 const DEFAULT_DESC =
-  'Triforion Technology | Agensi pengembangan website profesional, aplikasi web custom, dan solusi transformasi digital untuk UMKM hingga enterprise.'
+  'Triforion Technology | Studio pengembangan website profesional, aplikasi web custom, dan solusi digital untuk UMKM hingga enterprise.'
 const DEFAULT_IMAGE = 'https://i.ibb.co.com/FkN6ssgh/logo.webp'
 export const BASE_URL = 'https://triforiontech.pages.dev'
 
@@ -26,7 +26,6 @@ export function useSEO({
   schema,
 }: SEOProps = {}) {
   useEffect(() => {
-    // 1. Page Title
     const formattedTitle = title ? `${title} · Triforion` : DEFAULT_TITLE
     document.title = formattedTitle
 
@@ -40,7 +39,6 @@ export function useSEO({
       el.setAttribute('content', content)
     }
 
-    // 2. Standard Meta
     setMeta('name', 'description', description)
     setMeta(
       'name',
@@ -50,7 +48,6 @@ export function useSEO({
         : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
     )
 
-    // 3. Canonical Link
     const cleanPath = canonicalPath ? (canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`) : ''
     const fullCanonical = `${BASE_URL}${cleanPath}` || `${BASE_URL}/`
     let canonicalEl = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null
@@ -61,7 +58,6 @@ export function useSEO({
     }
     canonicalEl.setAttribute('href', fullCanonical)
 
-    // 4. OpenGraph Metadata
     setMeta('property', 'og:title', formattedTitle)
     setMeta('property', 'og:description', description)
     setMeta('property', 'og:url', fullCanonical)
@@ -70,13 +66,11 @@ export function useSEO({
     setMeta('property', 'og:site_name', 'Triforion Technology')
     setMeta('property', 'og:locale', 'id_ID')
 
-    // 5. Twitter Card Metadata
     setMeta('name', 'twitter:card', 'summary_large_image')
     setMeta('name', 'twitter:title', formattedTitle)
     setMeta('name', 'twitter:description', description)
     setMeta('name', 'twitter:image', image)
 
-    // 6. JSON-LD Dynamic Schema
     let scriptEl = document.querySelector('script[data-dynamic-seo]') as HTMLScriptElement | null
     if (schema) {
       if (!scriptEl) {

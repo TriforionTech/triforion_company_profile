@@ -205,42 +205,72 @@ export const ArticlePage: React.FC = () => {
       </motion.div>
 
       {relatedArticles.length > 0 && (
-        <section className="mt-16 sm:mt-24 pt-12 border-t border-border bg-surface/50">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg sm:text-xl font-bold text-text-primary tracking-tight">
-                Artikel Terkait Lainnya
-              </h3>
+        <section className="mt-16 sm:mt-24 pt-16 pb-16 sm:pb-20 border-t border-border bg-surface">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
+              <div>
+                <span className="inline-block px-3 py-1 bg-primary-100 text-primary-700 text-xs font-semibold rounded-full mb-2">
+                  REKOMENDASI BACAAN
+                </span>
+                <h2 className="text-xl sm:text-2xl font-bold text-text-primary tracking-tight">
+                  Artikel Terkait Lainnya
+                </h2>
+              </div>
               <Link
                 to="/blog"
-                className="text-xs sm:text-sm font-semibold text-primary-600 hover:text-primary-700 transition-colors flex items-center gap-1"
+                className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary-600 hover:text-primary-700 transition-colors"
               >
-                Lihat Semua <ArrowRight className="w-3.5 h-3.5" />
+                Lihat Semua Artikel <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
-            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+
+            <div className="grid sm:grid-cols-2 gap-6">
               {relatedArticles.map((rel) => (
                 <Link
                   key={rel.slug}
                   to={`/blog/${rel.slug}`}
-                  className="group bg-white rounded-xl border border-border p-4 hover:shadow-lg hover:shadow-primary-500/5 transition-all duration-200 flex flex-col justify-between"
+                  className="group bg-white rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:shadow-primary-500/5 transition-all duration-300 hover:-translate-y-0.5 flex flex-col h-full"
                 >
-                  <div>
-                    <span className="text-[11px] font-semibold text-primary-700 bg-primary-50 px-2 py-0.5 rounded-full inline-block mb-2">
+                  <div className="h-44 sm:h-48 bg-gradient-to-br from-primary-500 to-primary-700 relative overflow-hidden">
+                    <img
+                      src={rel.image}
+                      alt={rel.title}
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none'
+                      }}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-white/90 backdrop-blur-xs text-primary-800 text-[11px] font-semibold rounded-full shadow-xs">
                       {rel.category}
-                    </span>
-                    <h4 className="text-sm font-bold text-text-primary group-hover:text-primary-600 transition-colors leading-snug">
-                      {rel.title}
-                    </h4>
-                    <p className="text-xs text-text-secondary mt-1.5 line-clamp-2 leading-relaxed">
-                      {rel.excerpt}
-                    </p>
+                    </div>
                   </div>
-                  <div className="mt-3 pt-2.5 border-t border-border flex items-center justify-between text-[11px] text-text-muted">
-                    <span>{rel.readTime}</span>
-                    <span className="font-semibold text-primary-600 flex items-center gap-1">
-                      Baca <ArrowRight className="w-3 h-3" />
-                    </span>
+
+                  <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between">
+                    <div>
+                      <div className="flex items-center gap-2 text-xs text-text-muted mb-2.5">
+                        <span className="inline-flex items-center gap-1">
+                          <Clock className="w-3.5 h-3.5" />
+                          {rel.readTime}
+                        </span>
+                        <span>•</span>
+                        <span>{rel.date}</span>
+                      </div>
+                      <h3 className="text-base sm:text-lg font-bold text-text-primary group-hover:text-primary-600 transition-colors leading-snug mb-2">
+                        {rel.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-text-secondary line-clamp-2 leading-relaxed">
+                        {rel.excerpt}
+                      </p>
+                    </div>
+
+                    <div className="mt-5 pt-3.5 border-t border-border flex items-center justify-between text-xs">
+                      <span className="text-text-muted">{rel.author}</span>
+                      <span className="inline-flex items-center gap-1 font-semibold text-primary-600 group-hover:gap-2 transition-all">
+                        Baca artikel <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
                   </div>
                 </Link>
               ))}

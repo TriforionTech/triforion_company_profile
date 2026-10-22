@@ -32,6 +32,7 @@
 
   --font-sans: 'Onest', system-ui, -apple-system, sans-serif;
   --font-display: 'Onest', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 html {
@@ -51,7 +52,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Proteksi Global Responsif: Mencegah item di dalam CSS Grid meluber ke kanan pada layar kecil (320px) */
 .grid > * {
   min-width: 0;
 }
@@ -129,3 +129,189 @@ body {
   animation: skeletonWave 1.6s ease-in-out infinite;
 }
 
+.prose {
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--color-text-secondary);
+}
+
+.prose h1 {
+  font-size: 1.5rem;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-text-primary);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+@media (min-width: 640px) {
+  .prose h1 { font-size: 2.25rem; }
+}
+
+.prose h2 {
+  font-size: 1.25rem;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-top: 2.25rem;
+  margin-bottom: 0.875rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+@media (min-width: 640px) {
+  .prose h2 { font-size: 1.5rem; }
+}
+
+.prose h3 {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-top: 1.75rem;
+  margin-bottom: 0.625rem;
+}
+
+.prose h4 {
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose p {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.25rem;
+}
+@media (min-width: 640px) {
+  .prose p { font-size: 1rem; }
+}
+
+.prose strong {
+  color: var(--color-text-primary);
+  font-weight: 700;
+}
+
+.prose em {
+  font-style: italic;
+  color: var(--color-text-primary);
+}
+
+.prose ul, .prose ol {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding-left: 1.25rem;
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+}
+@media (min-width: 640px) {
+  .prose ul, .prose ol { font-size: 1rem; }
+}
+
+.prose ul {
+  list-style-type: disc;
+}
+
+.prose ol {
+  list-style-type: decimal;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+  line-height: 1.65;
+}
+
+.prose li::marker {
+  color: var(--color-primary-500);
+}
+
+.prose a {
+  color: var(--color-primary-500);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+.prose a:hover {
+  color: var(--color-primary-700);
+}
+
+.prose blockquote {
+  border-left: 4px solid var(--color-primary-500);
+  background-color: var(--color-surface);
+  border-radius: 0 0.375rem 0.375rem 0;
+  padding: 0.875rem 1.125rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--color-text-primary);
+  border-top: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+.prose blockquote p {
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+}
+.prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+.prose blockquote strong {
+  color: var(--color-primary-700);
+  font-size: 0.9375rem;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  margin-bottom: 1.75rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  font-size: 0.875rem;
+}
+.prose th {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.8125rem;
+}
+.prose td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+}
+.prose tr:last-child td {
+  border-bottom: none;
+}
+.prose tr:hover td {
+  background-color: rgba(6, 104, 208, 0.02);
+}
+
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  margin: 2.25rem 0;
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background-color: var(--color-surface);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}

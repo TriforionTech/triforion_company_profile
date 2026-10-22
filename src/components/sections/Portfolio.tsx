@@ -102,7 +102,7 @@ export const Portfolio: React.FC = () => {
     {
       title: 'Bloomorist',
       category: 'Web Application',
-      desc: 'Aplikasi web terintegrasi untuk bisnis florist — kelola stok, catat keuangan, dan buat invoice digital secara otomatis.',
+      desc: 'Aplikasi web terintegrasi untuk bisnis florist dengan fitur kelola stok, pencatatan keuangan, dan pembuatan invoice digital secara otomatis.',
       color: 'from-rose-500 to-pink-600',
       metrics: 'Operasional lebih rapi',
       image: 'https://i.ibb.co.com/mLZBYSV/bloomorist-fullpage-compressed.webp',
@@ -126,9 +126,9 @@ export const Portfolio: React.FC = () => {
     {
       title: 'Twentynine Cleaning Shoes',
       category: 'Jasa',
-      desc: 'Website komersial penyedia jasa perawatan sepatu modern — tampil rapi, responsif, cepat diakses, dengan informasi layanan yang jelas.',
+      desc: 'Website komersial penyedia jasa perawatan sepatu modern dengan tampilan rapi, responsif, cepat diakses, dan informasi layanan yang jelas.',
       color: 'from-amber-500 to-orange-600',
-      metrics: 'Fast & responsive',
+      metrics: 'Akses cepat & responsif',
       image: 'https://i.ibb.co.com/0jGp2JmP/twentynine-fullpage-compressed.webp',
     },
     {

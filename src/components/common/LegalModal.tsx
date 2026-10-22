@@ -67,13 +67,13 @@ export const LegalModal: React.FC<LegalModalProps> = ({
             <div className="p-5 sm:p-6 border-b border-border flex items-start justify-between gap-4">
               <div>
                 <span className="text-[11px] font-mono uppercase tracking-wider text-primary-600 font-semibold">
-                  Ketentuan Transparansi &amp; Legal
+                  Ketentuan Layanan
                 </span>
                 <h3
                   id="legal-modal-title"
                   className="text-lg font-bold text-text-primary mt-0.5 tracking-tight"
                 >
-                  Dokumen Acuan Hukum &amp; Privasi Proyek
+                  Kebijakan Privasi &amp; Syarat Ketentuan
                 </h3>
               </div>
               <button
@@ -166,8 +166,6 @@ export const LegalModal: React.FC<LegalModalProps> = ({
                 </div>
               )}
             </div>
-
-            {/* Footer Action */}
             <div className="p-4 sm:p-5 border-t border-border bg-surface flex items-center justify-between gap-3">
               <span className="text-[11px] text-text-muted">
                 Berlaku sejak 2025 • Versi 1.1
