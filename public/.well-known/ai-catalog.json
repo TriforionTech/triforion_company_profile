@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/ards-project/ard-spec/main/spec/schemas/ai-catalog.schema.json",
   "specVersion": "1.0",
   "host": {
     "displayName": "Triforion Technology",
@@ -8,29 +9,30 @@
   },
   "entries": [
     {
-      "identifier": "urn:ai:triforiontech.pages.dev:docs:llms-txt",
-      "displayName": "Triforion Technology Website Guide",
-      "type": "text/markdown",
+      "identifier": "urn:air:triforiontech.pages.dev:skills:website-guide",
+      "displayName": "Triforion Website & Service Guide",
+      "description": "Panduan terstruktur profil perusahaan, layanan pembuatan website, dan daftar paket harga Triforion Technology untuk AI agent.",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
       "url": "https://triforiontech.pages.dev/llms.txt",
-      "description": "Ringkasan terstruktur website Triforion Technology yang mencakup layanan pengembangan website, paket harga, portofolio, artikel blog, lowongan karir, dan informasi kontak.",
-      "representativeQueries": [
-        "Layanan pembuatan website apa saja yang ditawarkan Triforion Technology?",
-        "Berapa harga paket landing page termurah di Triforion Technology?",
-        "Bagaimana cara menghubungi Triforion Technology untuk konsultasi project?"
-      ],
-      "tags": ["web-development", "software-house", "company-profile", "landing-page", "indonesia"]
+      "tags": [
+        "agent-skills",
+        "web-development",
+        "company-profile",
+        "pricing"
+      ]
     },
     {
-      "identifier": "urn:ai:triforiontech.pages.dev:docs:sitemap",
-      "displayName": "Triforion Technology Sitemap",
-      "type": "application/xml",
-      "url": "https://triforiontech.pages.dev/sitemap.xml",
-      "description": "Daftar seluruh halaman publik website Triforion Technology untuk keperluan crawling dan penemuan konten.",
-      "representativeQueries": [
-        "Halaman apa saja yang tersedia di website Triforion Technology?",
-        "Daftar artikel blog Triforion Technology"
-      ],
-      "tags": ["sitemap", "discovery"]
+      "identifier": "urn:air:triforiontech.pages.dev:agent:consultant",
+      "displayName": "Triforion Web Consultant Agent",
+      "description": "Agen konsultasi digital Triforion Technology untuk melayani konsultasi kebutuhan pembuatan website, estimasi biaya, dan spesifikasi teknis.",
+      "type": "application/agent-card+json",
+      "url": "https://triforiontech.pages.dev/.well-known/agent-card.json",
+      "tags": [
+        "software-house",
+        "web-consultant",
+        "agent-card",
+        "indonesia"
+      ]
     }
   ]
 }

@@ -1,0 +1,29 @@
+{
+  "identifier": "urn:air:triforiontech.pages.dev:agent:consultant",
+  "displayName": "Triforion Web Consultant Agent",
+  "version": "1.0.0",
+  "description": "Agen konsultasi digital resmi Triforion Technology untuk memberikan estimasi biaya, rekomendasi paket website, dan konsultasi spesifikasi teknis proyek.",
+  "provider": {
+    "name": "Triforion Technology",
+    "url": "https://triforiontech.pages.dev/",
+    "contact": "triforiontechnology@gmail.com"
+  },
+  "capabilities": [
+    "consultation",
+    "project-estimation",
+    "website-recommendations",
+    "pricing-inquiries"
+  ],
+  "representativeQueries": [
+    "Berapa biaya pembuatan website company profile di Triforion?",
+    "Apa paket landing page termurah yang tersedia?",
+    "Bagaimana cara memesan website custom untuk bisnis saya?"
+  ],
+  "tags": [
+    "web-agency",
+    "software-house",
+    "consulting",
+    "indonesia"
+  ],
+  "contactUrl": "https://wa.me/6281231929833"
+}

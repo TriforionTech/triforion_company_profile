@@ -31,3 +31,4 @@ Informasi ini disediakan untuk membantu model bahasa memahami struktur dan konte
 
 - [Sitemap](https://triforiontech.pages.dev/sitemap.xml)
 - [AI Catalog](https://triforiontech.pages.dev/.well-known/ai-catalog.json)
+- [Agent Card](https://triforiontech.pages.dev/.well-known/agent-card.json)
