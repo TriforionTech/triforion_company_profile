@@ -3,13 +3,50 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft, Tag, Calendar, Clock, ArrowRight, Share2 } from 'lucide-react'
 import { getArticleBySlug, getAllArticles } from '../data/articles'
-import { useDocumentTitle } from '../hooks/useDocumentTitle'
+import { useSEO, BASE_URL } from '../hooks/useSEO'
 
 export const ArticlePage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>()
   const navigate = useNavigate()
   const article = slug ? getArticleBySlug(slug) : undefined
-  useDocumentTitle(article ? article.title : 'Artikel Tidak Ditemukan')
+
+  const articleSchema = article
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: article.title,
+        description: article.excerpt,
+        image: article.image,
+        datePublished: article.date,
+        author: {
+          '@type': 'Person',
+          name: article.author,
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Triforion Technology',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://i.ibb.co.com/FkN6ssgh/logo.webp',
+          },
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': `${BASE_URL}/blog/${article.slug}`,
+        },
+      }
+    : undefined
+
+  useSEO({
+    title: article ? article.title : 'Artikel Tidak Ditemukan',
+    description: article?.excerpt,
+    canonicalPath: article ? `/blog/${article.slug}` : '/blog',
+    image: article?.image,
+    type: 'article',
+    noindex: !article,
+    schema: articleSchema,
+  })
+
   const allArticles = getAllArticles()
   const relatedArticles = article
     ? allArticles.filter((a) => a.slug !== article.slug).slice(0, 2)
@@ -116,6 +153,9 @@ export const ArticlePage: React.FC = () => {
           <img
             src={article.image}
             alt={article.title}
+            width="1200"
+            height="675"
+            decoding="async"
             onError={(e) => {
               e.currentTarget.style.display = 'none'
             }}

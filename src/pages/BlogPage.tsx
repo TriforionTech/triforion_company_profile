@@ -3,10 +3,16 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Tag, Calendar, Clock, ArrowRight, ArrowLeft } from 'lucide-react'
 import { getAllArticles } from '../data/articles'
-import { useDocumentTitle } from '../hooks/useDocumentTitle'
+import { useSEO } from '../hooks/useSEO'
 
 export const BlogPage: React.FC = () => {
-  useDocumentTitle('Blog & Wawasan')
+  useSEO({
+    title: 'Blog & Wawasan',
+    description:
+      'Artikel, wawasan industri, dan analisis teknologi terkini seputar transformasi digital, pengembangan aplikasi, dan ekonomi pasar modal.',
+    canonicalPath: '/blog',
+    type: 'website',
+  })
   const articles = getAllArticles()
   const featuredArticles = articles.filter((a) => a.featured)
 
@@ -64,6 +70,7 @@ export const BlogPage: React.FC = () => {
                         }}
                         className="absolute inset-0 w-full h-full object-cover"
                         loading="lazy"
+                        decoding="async"
                       />
                       <div className="absolute top-3 left-3 px-2.5 py-1 bg-cta text-cta-text text-[11px] font-bold rounded-full">
                         FEATURED
@@ -128,6 +135,7 @@ export const BlogPage: React.FC = () => {
                       }}
                       className="absolute inset-0 w-full h-full object-cover"
                       loading="lazy"
+                      decoding="async"
                     />
                     {article.featured && (
                       <div className="absolute top-3 left-3 px-2.5 py-1 bg-cta text-cta-text text-[11px] font-bold rounded-full">

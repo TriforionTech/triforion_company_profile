@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { RootLayout } from './components/layout/RootLayout'
 import { HomePage } from './pages/HomePage'
 import { BlogPage } from './pages/BlogPage'
@@ -43,7 +43,7 @@ const ScrollManager: React.FC = () => {
 
 export const App: React.FC = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <ScrollManager />
       <RootLayout>
         <Routes>
@@ -54,7 +54,7 @@ export const App: React.FC = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </RootLayout>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 

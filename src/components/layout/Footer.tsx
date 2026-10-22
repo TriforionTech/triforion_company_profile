@@ -43,6 +43,10 @@ export const Footer: React.FC = () => {
                 <img
                   src="https://i.ibb.co.com/FkN6ssgh/logo.webp"
                   alt="Triforion Technology"
+                  width={36}
+                  height={36}
+                  loading="lazy"
+                  decoding="async"
                   className="w-8 h-8 sm:w-9 sm:h-9 object-contain"
                 />
                 <span className="font-bold text-base sm:text-lg text-white tracking-tight">

@@ -1,0 +1,7 @@
+# Robots.txt for Triforion Technology
+# Allow search engine crawlers to crawl all public pages
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://triforiontech.pages.dev/sitemap.xml

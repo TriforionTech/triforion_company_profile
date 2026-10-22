@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDocumentTitle } from '../hooks/useDocumentTitle'
+import { useSEO } from '../hooks/useSEO'
 import { Hero } from '../components/sections/Hero'
 import { ClientMarquee } from '../components/sections/ClientMarquee'
 import { Services } from '../components/sections/Services'
@@ -9,7 +9,10 @@ import { CTASection } from '../components/sections/CTASection'
 import { Contact } from '../components/sections/Contact'
 
 export const HomePage: React.FC = () => {
-  useDocumentTitle()
+  useSEO({
+    canonicalPath: '/',
+    type: 'website',
+  })
   return (
     <>
       <Hero />

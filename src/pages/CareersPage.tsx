@@ -3,10 +3,16 @@ import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Zap, Users, TrendingUp, MapPin, Clock, Check, ArrowRight, ArrowLeft, Send } from 'lucide-react'
 import type { Job } from '../types'
-import { useDocumentTitle } from '../hooks/useDocumentTitle'
+import { useSEO } from '../hooks/useSEO'
 
 export const CareersPage: React.FC = () => {
-  useDocumentTitle('Karir')
+  useSEO({
+    title: 'Karir',
+    description:
+      'Bergabung dengan tim Triforion Technology. Peluang karir dan lingkungan kerja inovatif, kolaboratif, serta berdampak nyata di industri teknologi.',
+    canonicalPath: '/careers',
+    type: 'website',
+  })
   const navigate = useNavigate()
 
   const handleSpontaneousApply = () => {

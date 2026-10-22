@@ -32,6 +32,7 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({ image, title, category,
             src={image}
             alt={`${title} - ${category}`}
             loading="lazy"
+            decoding="async"
             onLoad={() => setIsLoaded(true)}
             onError={() => setHasError(true)}
             className={`w-full h-auto min-h-[200%] object-cover animate-pan transition-opacity duration-500 ease-out ${
@@ -270,6 +271,7 @@ export const Portfolio: React.FC = () => {
                     <img
                       src={selectedProject.image}
                       alt={selectedProject.title}
+                      decoding="async"
                       onError={() => setModalImgError(true)}
                       className="w-full h-full object-cover object-top"
                     />

@@ -1,10 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
-import { useDocumentTitle } from '../hooks/useDocumentTitle'
+import { useSEO } from '../hooks/useSEO'
 
 export const NotFoundPage: React.FC = () => {
-  useDocumentTitle('404 Tidak Ditemukan')
+  useSEO({
+    title: '404 Tidak Ditemukan',
+    description: 'Halaman yang Anda tuju tidak tersedia atau telah dipindahkan.',
+    noindex: true,
+  })
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4 py-20">
       <span className="text-6xl font-extrabold gradient-text mb-4">404</span>
