@@ -17,11 +17,12 @@ import {
   SiGithub,
   SiFigma,
 } from 'react-icons/si'
+import type { IconType } from 'react-icons'
 
 interface TechItem {
   name: string
   slug: string
-  icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>
+  icon: IconType
   color: string
 }
 
@@ -66,9 +67,14 @@ export const ClientMarquee: React.FC = () => {
           </p>
         </div>
         <div className="relative">
+          <ul className="sr-only">
+            {clients.map((client) => (
+              <li key={client}>{client}</li>
+            ))}
+          </ul>
           <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-surface to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-surface to-transparent z-10 pointer-events-none" />
-          <div className="flex animate-marquee whitespace-nowrap">
+          <div className="flex animate-marquee whitespace-nowrap" aria-hidden="true">
             {clientItems.map((client, i) => (
               <div key={i} className="inline-flex items-center gap-3 mx-6 sm:mx-8">
                 <span className="text-base sm:text-lg font-semibold text-text-secondary hover:text-primary-500 transition-colors duration-200">
@@ -92,9 +98,14 @@ export const ClientMarquee: React.FC = () => {
           </p>
         </div>
         <div className="relative">
+          <ul className="sr-only">
+            {technologies.map((tech) => (
+              <li key={tech.slug}>{tech.name}</li>
+            ))}
+          </ul>
           <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-surface to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-surface to-transparent z-10 pointer-events-none" />
-          <div className="flex animate-marquee-reverse whitespace-nowrap items-center">
+          <div className="flex animate-marquee-reverse whitespace-nowrap items-center" aria-hidden="true">
             {techItems.map((tech, i) => {
               const Icon = tech.icon
               return (
@@ -102,9 +113,10 @@ export const ClientMarquee: React.FC = () => {
                   key={i}
                   className="inline-flex items-center justify-center mx-5 sm:mx-7 shrink-0 group py-1"
                   title={tech.name}
-                  aria-label={tech.name}
                 >
                   <Icon
+                    aria-hidden="true"
+                    focusable="false"
                     className="w-6 h-6 sm:w-7 sm:h-7 shrink-0 transition-transform duration-200 group-hover:scale-125"
                     style={{ color: tech.color }}
                   />

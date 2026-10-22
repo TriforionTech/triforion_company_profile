@@ -80,8 +80,11 @@ export const Contact: React.FC = () => {
             >
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-text-secondary mb-1.5">Nama</label>
+                  <label htmlFor="contact-name" className="block text-xs font-medium text-text-secondary mb-1.5">Nama</label>
                   <input
+                    id="contact-name"
+                    name="name"
+                    autoComplete="name"
                     type="text"
                     required
                     value={formData.name}
@@ -91,8 +94,11 @@ export const Contact: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-text-secondary mb-1.5">Email</label>
+                  <label htmlFor="contact-email" className="block text-xs font-medium text-text-secondary mb-1.5">Email</label>
                   <input
+                    id="contact-email"
+                    name="email"
+                    autoComplete="email"
                     type="email"
                     required
                     value={formData.email}
@@ -104,8 +110,10 @@ export const Contact: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-text-secondary mb-1.5">Jenis Layanan</label>
+                <label htmlFor="contact-service" className="block text-xs font-medium text-text-secondary mb-1.5">Jenis Layanan</label>
                 <select
+                  id="contact-service"
+                  name="service"
                   value={formData.service}
                   onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                   className="w-full px-3.5 py-2.5 bg-surface border border-border rounded-lg text-sm text-text-primary focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-100 transition-all"
@@ -120,8 +128,10 @@ export const Contact: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-text-secondary mb-1.5">Pesan</label>
+                <label htmlFor="contact-message" className="block text-xs font-medium text-text-secondary mb-1.5">Pesan</label>
                 <textarea
+                  id="contact-message"
+                  name="message"
                   rows={4}
                   required
                   value={formData.message}

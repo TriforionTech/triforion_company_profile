@@ -65,7 +65,7 @@ export const Footer: React.FC = () => {
             </div>
 
             <div>
-              <h4 className="text-sm font-semibold text-white mb-3">Layanan</h4>
+              <h3 className="text-sm font-semibold text-white mb-3">Layanan</h3>
               <ul className="space-y-2">
                 {['Company Profile', 'Landing Page', 'Web Application', 'E-Commerce', 'SEO'].map((item) => (
                   <li key={item}>
@@ -81,7 +81,7 @@ export const Footer: React.FC = () => {
             </div>
 
             <div>
-              <h4 className="text-sm font-semibold text-white mb-3">Perusahaan</h4>
+              <h3 className="text-sm font-semibold text-white mb-3">Perusahaan</h3>
               <ul className="space-y-2">
                 <li>
                   <button
@@ -129,7 +129,7 @@ export const Footer: React.FC = () => {
             </div>
 
             <div>
-              <h4 className="text-sm font-semibold text-white mb-3">Kontak</h4>
+              <h3 className="text-sm font-semibold text-white mb-3">Kontak</h3>
               <ul className="space-y-2">
                 <li className="text-sm text-footer-text/70">triforiontechnology@gmail.com</li>
                 <li className="text-sm text-footer-text/70">0812-3192-9833</li>

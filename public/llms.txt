@@ -1,0 +1,33 @@
+# Triforion Technology
+
+> Triforion Technology adalah software house yang membangun website company profile, landing page, aplikasi web, dan e-commerce untuk UMKM hingga korporasi di Indonesia.
+
+Informasi ini disediakan untuk membantu model bahasa memahami struktur dan konten utama website Triforion Technology.
+
+## Halaman Utama
+
+- [Beranda](https://triforiontech.pages.dev/): Profil perusahaan, layanan, proses kerja, portofolio, paket harga, dan formulir kontak.
+- [Blog](https://triforiontech.pages.dev/blog): Artikel seputar teknologi, pengembangan web, dan bisnis digital.
+- [Karir](https://triforiontech.pages.dev/careers): Lowongan pekerjaan dan informasi bergabung dengan tim Triforion.
+
+## Layanan
+
+- [Layanan](https://triforiontech.pages.dev/#layanan): Website Company Profile, Landing Page, Web Application, SEO & Optimasi, Maintenance & Support, dan E-Commerce.
+- [Paket Harga](https://triforiontech.pages.dev/#harga): Paket Starter Landing Page mulai Rp 299.000, Company Profile, Web App & E-Commerce, dan Custom Enterprise.
+- [Portofolio](https://triforiontech.pages.dev/#portofolio): Contoh project yang telah dikerjakan beserta tautan ke website aslinya.
+
+## Artikel
+
+- [Ringkasan Pasar Modal dan Ekonomi Indonesia YTD 2026](https://triforiontech.pages.dev/blog/ringkasan-pasar-modal-ekonomi-indonesia-ytd-2026)
+- [AI dan Programmer Masa Depan: Kolaborasi](https://triforiontech.pages.dev/blog/ai-dan-programmer-masa-depan-kolaborasi)
+
+## Kontak
+
+- [WhatsApp](https://wa.me/6281231929833): 0812-3192-9833
+- [Email](mailto:triforiontechnology@gmail.com): triforiontechnology@gmail.com
+- [LinkedIn](https://www.linkedin.com/company/triforiontech/)
+
+## Optional
+
+- [Sitemap](https://triforiontech.pages.dev/sitemap.xml)
+- [AI Catalog](https://triforiontech.pages.dev/.well-known/ai-catalog.json)
