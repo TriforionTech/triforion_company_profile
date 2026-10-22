@@ -43,6 +43,7 @@ export interface ProjectItem {
   color: string
   metrics: string
   image?: string
+  url?: string
 }
 
 export interface ContactInfo {

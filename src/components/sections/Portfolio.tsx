@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronRight, Loader2, X, ArrowRight, Sparkles } from 'lucide-react'
+import { ChevronRight, Loader2, ExternalLink } from 'lucide-react'
 import { SectionHeader } from '../common/SectionHeader'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 import type { ProjectItem } from '../../types'
@@ -10,13 +10,14 @@ interface PortfolioImageProps {
   title: string
   category: string
   color: string
+  url?: string
 }
 
-const PortfolioImage: React.FC<PortfolioImageProps> = ({ image, title, category, color }) => {
+const PortfolioImage: React.FC<PortfolioImageProps> = ({ image, title, category, color, url }) => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [hasError, setHasError] = useState(!image)
 
-  return (
+  const content = (
     <div className={`h-36 sm:h-48 bg-gradient-to-br ${color} relative overflow-hidden select-none`}>
       {!isLoaded && !hasError && (
         <div className="absolute inset-0 z-10 flex items-center justify-center bg-slate-950/30 backdrop-blur-[2px]">
@@ -54,49 +55,27 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({ image, title, category,
       </div>
     </div>
   )
+
+  if (url) {
+    return (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block group/thumbnail overflow-hidden"
+        aria-label={`Kunjungi website ${title}`}
+      >
+        {content}
+      </a>
+    )
+  }
+
+  return content
 }
 
 export const Portfolio: React.FC = () => {
   const { ref, isInView } = useScrollReveal()
   const [visibleCount, setVisibleCount] = useState(4)
-  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null)
-  const [modalImgError, setModalImgError] = useState(false)
-
-  const openProjectDetail = (project: ProjectItem) => {
-    setModalImgError(false)
-    setSelectedProject(project)
-  }
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && selectedProject) {
-        setSelectedProject(null)
-      }
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [selectedProject])
-
-  useEffect(() => {
-    if (selectedProject) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [selectedProject])
-
-  const scrollToContact = () => {
-    setSelectedProject(null)
-    setTimeout(() => {
-      const element = document.getElementById('kontak')
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
-    }, 100)
-  }
 
   const projects: ProjectItem[] = [
     {
@@ -106,6 +85,7 @@ export const Portfolio: React.FC = () => {
       color: 'from-rose-500 to-pink-600',
       metrics: 'Operasional lebih rapi',
       image: 'https://i.ibb.co.com/mLZBYSV/bloomorist-fullpage-compressed.webp',
+      url: 'https://bloomorist.com/',
     },
     {
       title: 'Anmedia Group',
@@ -114,6 +94,7 @@ export const Portfolio: React.FC = () => {
       color: 'from-primary-500 to-primary-700',
       metrics: 'Konten mudah diperbarui',
       image: 'https://i.ibb.co.com/QvkcZW6S/anmedia-fullpage-compressed.webp',
+      url: 'https://anmediagroub.com/',
     },
     {
       title: 'PKK Awang Bangkal Barat',
@@ -122,6 +103,7 @@ export const Portfolio: React.FC = () => {
       color: 'from-emerald-500 to-teal-600',
       metrics: 'Informasi terpusat',
       image: 'https://i.ibb.co.com/39Hw8qFR/pkk-awangbangka-fullpage-compressed.webp',
+      url: 'https://pkk-awangbangkalbarat.org/',
     },
     {
       title: 'Twentynine Cleaning Shoes',
@@ -130,6 +112,7 @@ export const Portfolio: React.FC = () => {
       color: 'from-amber-500 to-orange-600',
       metrics: 'Akses cepat & responsif',
       image: 'https://i.ibb.co.com/0jGp2JmP/twentynine-fullpage-compressed.webp',
+      url: 'https://twentyninecleaningshoes.pages.dev/',
     },
     {
       title: 'Hot Plate PAK MINTO',
@@ -137,6 +120,7 @@ export const Portfolio: React.FC = () => {
       desc: 'Menu digital dan pemesanan via WhatsApp yang mudah. Pengunjung melihat pilihan menu dan langsung memesan tanpa langkah rumit.',
       color: 'from-red-500 to-rose-600',
       metrics: 'Pemesanan instan',
+      url: 'https://hot-plate-pak-minto.pages.dev/',
     },
     {
       title: 'BARBERBOY',
@@ -144,6 +128,7 @@ export const Portfolio: React.FC = () => {
       desc: 'Website barbershop yang menampilkan layanan, gaya potong rambut, dan kemudahan booking melalui WhatsApp dengan tampilan sederhana.',
       color: 'from-slate-700 to-gray-900',
       metrics: 'Booking via WhatsApp',
+      url: 'https://barberboy.pages.dev/',
     },
   ]
 
@@ -151,36 +136,37 @@ export const Portfolio: React.FC = () => {
   const hasMore = visibleCount < projects.length
 
   return (
-    <>
-      <section id="portofolio" ref={ref} className="py-12 sm:py-20 lg:py-24 bg-surface">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            badge="PORTOFOLIO"
-            title="Karya yang"
-            highlight="berbicara"
-            description="Beberapa project terbaik kami yang telah membantu bisnis tumbuh secara digital."
-          />
+    <section id="portofolio" ref={ref} className="py-12 sm:py-20 lg:py-24 bg-surface">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          badge="PORTOFOLIO"
+          title="Karya yang"
+          highlight="berbicara"
+          description="Beberapa project terbaik kami yang telah membantu bisnis tumbuh secara digital."
+        />
 
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-            <AnimatePresence>
-              {visibleProjects.map((project, i) => (
-                <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, delay: i * 0.07 }}
-                  layout
-                  className="group relative bg-white rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:shadow-primary-500/5 transition-all duration-300 hover:-translate-y-0.5"
-                >
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+          <AnimatePresence>
+            {visibleProjects.map((project, i) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4, delay: i * 0.07 }}
+                layout
+                className="group relative bg-white rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:shadow-primary-500/5 transition-all duration-300 hover:-translate-y-0.5 flex flex-col justify-between"
+              >
+                <div>
                   <PortfolioImage
                     image={project.image}
                     title={project.title}
                     category={project.category}
                     color={project.color}
+                    url={project.url}
                   />
 
-                  <div className="p-5 sm:p-6">
+                  <div className="p-5 sm:p-6 pb-0">
                     <div className="flex items-start justify-between gap-2 mb-1">
                       <h3 className="text-[15px] sm:text-base font-bold text-text-primary tracking-tight leading-snug">
                         {project.title}
@@ -192,131 +178,41 @@ export const Portfolio: React.FC = () => {
                     <p className="text-sm text-text-secondary leading-relaxed">
                       {project.desc}
                     </p>
-                    <button
-                      onClick={() => openProjectDetail(project)}
-                      className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary-500 hover:text-primary-700 transition-colors group/link cursor-pointer bg-transparent border-none p-0"
-                    >
-                      Lihat detail
-                      <ChevronRight className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" />
-                    </button>
                   </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
-
-          {hasMore && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-8 flex justify-center">
-              <button
-                onClick={() => setVisibleCount(projects.length)}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-border text-text-primary text-sm font-semibold rounded-xl hover:border-primary-300 hover:bg-primary-50 hover:text-primary-500 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
-              >
-                Lihat Semua Project
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </motion.div>
-          )}
-        </div>
-      </section>
-
-      <AnimatePresence>
-        {selectedProject && (
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="portfolio-modal-title"
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/60 backdrop-blur-xs"
-          >
-            <div
-              className="absolute inset-0"
-              onClick={() => setSelectedProject(null)}
-              aria-hidden="true"
-            />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-full max-w-xl bg-white rounded-2xl border border-border shadow-2xl overflow-hidden flex flex-col max-h-[85vh] z-10"
-            >
-              <div className="p-5 sm:p-6 border-b border-border flex items-start justify-between gap-4">
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="px-2.5 py-0.5 bg-primary-50 text-primary-700 text-xs font-semibold rounded-full">
-                      {selectedProject.category}
-                    </span>
-                    <span className="px-2 py-0.5 bg-success/10 text-success text-xs font-semibold rounded-full">
-                      {selectedProject.metrics}
-                    </span>
-                  </div>
-                  <h3
-                    id="portfolio-modal-title"
-                    className="text-lg sm:text-xl font-bold text-text-primary tracking-tight"
-                  >
-                    {selectedProject.title}
-                  </h3>
                 </div>
-                <button
-                  onClick={() => setSelectedProject(null)}
-                  className="p-1.5 rounded-lg text-text-muted hover:text-text-primary hover:bg-surface transition-colors cursor-pointer border-none bg-transparent"
-                  aria-label="Tutup modal"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
 
-              <div className="p-5 sm:p-6 overflow-y-auto space-y-4 text-sm text-text-secondary leading-relaxed flex-1">
-                {selectedProject.image && !modalImgError && (
-                  <div className="rounded-xl overflow-hidden border border-border max-h-64 relative bg-surface">
-                    <img
-                      src={selectedProject.image}
-                      alt={selectedProject.title}
-                      decoding="async"
-                      onError={() => setModalImgError(true)}
-                      className="w-full h-full object-cover object-top"
-                    />
+                {project.url && (
+                  <div className="p-5 sm:p-6 pt-4">
+                    <div className="pt-3 border-t border-border">
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-500 hover:text-primary-700 transition-colors group/link"
+                      >
+                        Kunjungi Website
+                        <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                      </a>
+                    </div>
                   </div>
                 )}
-                <div>
-                  <h4 className="text-sm font-bold text-text-primary mb-1.5 flex items-center gap-1.5">
-                    <Sparkles className="w-4 h-4 text-primary-500" />
-                    Ringkasan Solusi
-                  </h4>
-                  <p className="leading-relaxed">
-                    {selectedProject.desc}
-                  </p>
-                </div>
-                <div className="p-4 rounded-xl bg-surface border border-border space-y-2">
-                  <p className="text-xs font-semibold text-text-primary">Karakteristik Implementasi:</p>
-                  <ul className="text-xs text-text-secondary space-y-1 list-disc list-inside">
-                    <li>Desain responsif mobile-first teruji di berbagai perangkat</li>
-                    <li>Kecepatan akses optimal dengan performa Core Web Vitals tinggi</li>
-                    <li>Integrasi alur konversi langsung menuju saluran bisnis</li>
-                  </ul>
-                </div>
-              </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
 
-              <div className="p-4 sm:p-5 border-t border-border bg-surface flex items-center justify-between gap-3">
-                <button
-                  type="button"
-                  onClick={() => setSelectedProject(null)}
-                  className="px-4 py-2 text-xs font-semibold rounded-xl text-text-secondary hover:text-text-primary hover:bg-white transition-colors cursor-pointer border border-border"
-                >
-                  Tutup
-                </button>
-                <button
-                  type="button"
-                  onClick={scrollToContact}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-xl bg-cta text-cta-text hover:bg-cta-hover transition-colors shadow-xs cursor-pointer border-none"
-                >
-                  Konsultasikan Project Serupa
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </motion.div>
-          </div>
+        {hasMore && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-8 flex justify-center">
+            <button
+              onClick={() => setVisibleCount(projects.length)}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-border text-text-primary text-sm font-semibold rounded-xl hover:border-primary-300 hover:bg-primary-50 hover:text-primary-500 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
+            >
+              Lihat Semua Project
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </motion.div>
         )}
-      </AnimatePresence>
-    </>
+      </div>
+    </section>
   )
 }
