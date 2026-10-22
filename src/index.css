@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #EDF5FD;
+  --color-primary-100: #D9EAFC;
+  --color-primary-200: #B2D5FA;
+  --color-primary-300: #77B5F8;
+  --color-primary-400: #3491F4;
+  --color-primary-500: #0668D0;
+  --color-primary-600: #0659B2;
+  --color-primary-700: #054A94;
+  --color-primary-800: #053971;
+  --color-primary-900: #04284E;
+
+  --color-cta: #FFC62E;
+  --color-cta-hover: #F0B410;
+  --color-cta-text: #0F1B2D;
+
+  --color-surface: #F4F7FB;
+  --color-border: #E3E8EF;
+
+  --color-text-primary: #0F1B2D;
+  --color-text-secondary: #4B5B70;
+  --color-text-muted: #6B7A8F;
+
+  --color-footer-bg: #0B1A2E;
+  --color-footer-text: #9FB0C6;
+
+  --color-success: #1F9D5B;
+  --color-warning: #F5A623;
+  --color-danger: #D93F3F;
+
+  --font-sans: 'Onest', system-ui, -apple-system, sans-serif;
+  --font-display: 'Onest', system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  line-height: 1.55;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Proteksi Global Responsif: Mencegah item di dalam CSS Grid meluber ke kanan pada layar kecil (320px) */
+.grid > * {
+  min-width: 0;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-surface); }
+::-webkit-scrollbar-thumb { background: var(--color-primary-200); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary-400); }
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-primary-700) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(6, 104, 208, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 104, 208, 0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@keyframes borderGlow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+.animate-border-glow { animation: borderGlow 3s ease-in-out infinite; }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(6, 104, 208, 0.05) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeReverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.animate-marquee-reverse {
+  animation: marqueeReverse 35s linear infinite;
+}
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
+@keyframes panDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20%); }
+}
+.animate-pan {
+  animation: panDown 15s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+@keyframes skeletonWave {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.animate-skeleton-wave {
+  animation: skeletonWave 1.6s ease-in-out infinite;
+}
+
