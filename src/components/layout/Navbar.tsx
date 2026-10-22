@@ -22,14 +22,29 @@ export const Navbar: React.FC = () => {
     }
     const element = document.getElementById(id)
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      const navOffset = window.innerWidth < 640 ? 56 : 72
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - navOffset
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      })
     }
   }
 
   const handleHomeClick = (e?: React.MouseEvent) => {
     if (location.pathname === '/') {
       e?.preventDefault()
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      if (mobileOpen) {
+        setMobileOpen(false)
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        }, 200)
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+    } else {
+      setMobileOpen(false)
     }
   }
 
@@ -130,7 +145,9 @@ export const Navbar: React.FC = () => {
                       key={link.href + link.label}
                       onClick={() => {
                         setMobileOpen(false)
-                        scrollToSection(link.href)
+                        setTimeout(() => {
+                          scrollToSection(link.href)
+                        }, 200)
                       }}
                       className="w-full text-left block py-2.5 px-3 text-sm font-medium text-text-secondary hover:text-primary-500 hover:bg-primary-50 rounded-lg transition-colors cursor-pointer bg-transparent border-none"
                     >
@@ -143,9 +160,10 @@ export const Navbar: React.FC = () => {
                     key={link.href + link.label}
                     to={link.href}
                     onClick={(e) => {
-                      setMobileOpen(false)
                       if (link.href === '/') {
                         handleHomeClick(e)
+                      } else {
+                        setMobileOpen(false)
                       }
                     }}
                     className="block py-2.5 px-3 text-sm font-medium text-text-secondary hover:text-primary-500 hover:bg-primary-50 rounded-lg transition-colors"
@@ -158,7 +176,9 @@ export const Navbar: React.FC = () => {
                 <button
                   onClick={() => {
                     setMobileOpen(false)
-                    scrollToSection('kontak')
+                    setTimeout(() => {
+                      scrollToSection('kontak')
+                    }, 200)
                   }}
                   className="block w-full text-center px-5 py-2.5 bg-cta text-cta-text text-sm font-semibold rounded-lg cursor-pointer border-none"
                 >

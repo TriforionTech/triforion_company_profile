@@ -18,19 +18,24 @@ const ScrollManager: React.FC = () => {
       const scrollTarget = () => {
         const element = document.getElementById(targetId)
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' })
+          const navOffset = window.innerWidth < 640 ? 56 : 72
+          const elementPosition = element.getBoundingClientRect().top
+          const offsetPosition = elementPosition + window.pageYOffset - navOffset
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+          })
           return true
         }
         return false
       }
 
-      if (!scrollTarget()) {
-        const timer = setTimeout(() => {
-          scrollTarget()
-        }, 150)
-        return () => clearTimeout(timer)
+      const timer1 = setTimeout(scrollTarget, 100)
+      const timer2 = setTimeout(scrollTarget, 300)
+      return () => {
+        clearTimeout(timer1)
+        clearTimeout(timer2)
       }
-      return
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' })
