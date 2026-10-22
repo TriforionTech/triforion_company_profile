@@ -50,7 +50,7 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({ image, title, category,
         </div>
       )}
 
-      <div className="absolute top-2.5 right-2.5 z-20 px-2.5 py-0.5 bg-white/20 backdrop-blur-sm rounded-full text-[11px] sm:text-xs font-medium text-white shadow-sm">
+      <div className="absolute top-2.5 right-2.5 z-20 px-2.5 py-1 bg-slate-900/85 backdrop-blur-md rounded-full text-[11px] sm:text-xs font-semibold text-white shadow-md border border-white/15">
         {category}
       </div>
     </div>
