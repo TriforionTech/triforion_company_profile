@@ -1,5 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/ards-project/ard-spec/main/spec/schemas/ai-catalog.schema.json",
   "specVersion": "1.0",
   "host": {
     "displayName": "Triforion Technology",
@@ -14,6 +13,11 @@
       "description": "Panduan terstruktur profil perusahaan, layanan pembuatan website, dan daftar paket harga Triforion Technology untuk AI agent.",
       "type": "text/markdown; profile=\"urn:air:agent-skills\"",
       "url": "https://triforiontech.pages.dev/llms.txt",
+      "representativeQueries": [
+        "Apa saja layanan pembuatan website di Triforion Technology?",
+        "Berapa harga paket landing page termurah di Triforion?",
+        "Informasi profil perusahaan dan kontak Triforion Technology"
+      ],
       "tags": [
         "agent-skills",
         "web-development",
@@ -27,6 +31,11 @@
       "description": "Agen konsultasi digital Triforion Technology untuk melayani konsultasi kebutuhan pembuatan website, estimasi biaya, dan spesifikasi teknis.",
       "type": "application/agent-card+json",
       "url": "https://triforiontech.pages.dev/.well-known/agent-card.json",
+      "representativeQueries": [
+        "Konsultasi pembuatan website custom untuk bisnis",
+        "Rekomendasi paket website company profile dan estimasi harga",
+        "Bagaimana cara memesan aplikasi web di Triforion?"
+      ],
       "tags": [
         "software-house",
         "web-consultant",
