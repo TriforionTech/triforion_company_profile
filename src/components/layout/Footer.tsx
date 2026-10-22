@@ -100,6 +100,14 @@ export const Footer: React.FC = () => {
                   </button>
                 </li>
                 <li>
+                  <button
+                    onClick={() => scrollToSection('harga')}
+                    className="text-sm text-footer-text/70 hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0 text-left"
+                  >
+                    Paket Harga
+                  </button>
+                </li>
+                <li>
                   <Link to="/blog" className="text-sm text-footer-text/70 hover:text-white transition-colors">
                     Blog
                   </Link>

@@ -46,6 +46,18 @@ export interface ProjectItem {
   url?: string
 }
 
+export interface PricingPlan {
+  name: string
+  badge?: string
+  price: string
+  period?: string
+  desc: string
+  features: string[]
+  highlighted?: boolean
+  ctaText: string
+  ctaLink: string
+}
+
 export interface ContactInfo {
   icon: React.ComponentType<{ className?: string }>
   label: string

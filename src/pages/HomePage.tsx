@@ -5,6 +5,7 @@ import { ClientMarquee } from '../components/sections/ClientMarquee'
 import { Services } from '../components/sections/Services'
 import { Process } from '../components/sections/Process'
 import { Portfolio } from '../components/sections/Portfolio'
+import { Pricing } from '../components/sections/Pricing'
 import { CTASection } from '../components/sections/CTASection'
 import { Contact } from '../components/sections/Contact'
 
@@ -20,6 +21,7 @@ export const HomePage: React.FC = () => {
       <Services />
       <Process />
       <Portfolio />
+      <Pricing />
       <CTASection />
       <Contact />
     </>
