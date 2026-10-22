@@ -93,23 +93,36 @@ export const Hero: React.FC = () => {
           >
             <div className="relative">
               <div className="relative bg-white rounded-2xl border border-border shadow-2xl shadow-primary-900/5 p-6 overflow-hidden">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-3 h-3 rounded-full bg-danger" />
-                  <div className="w-3 h-3 rounded-full bg-warning" />
-                  <div className="w-3 h-3 rounded-full bg-success" />
-                  <div className="ml-3 flex-1 h-6 bg-surface rounded-md" />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
+                  <img
+                    src="https://i.ibb.co.com/FkN6ssgh/logo.webp"
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-52 h-52 sm:w-60 sm:h-60 object-contain opacity-[0.14] select-none pointer-events-none"
+                  />
                 </div>
-                <div className="space-y-3">
-                  <div className="h-8 bg-primary-50 rounded-lg w-3/4 shimmer" />
-                  <div className="h-4 bg-surface rounded w-full" />
-                  <div className="h-4 bg-surface rounded w-5/6" />
-                  <div className="h-4 bg-surface rounded w-2/3" />
-                  <div className="grid grid-cols-3 gap-3 mt-6">
-                    <div className="h-20 bg-primary-50 rounded-lg border border-primary-100" />
-                    <div className="h-20 bg-primary-50 rounded-lg border border-primary-100" />
-                    <div className="h-20 bg-primary-50 rounded-lg border border-primary-100" />
+
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-3 h-3 rounded-full bg-danger" />
+                    <div className="w-3 h-3 rounded-full bg-warning" />
+                    <div className="w-3 h-3 rounded-full bg-success" />
+                    <div className="ml-3 flex-1 h-6 bg-surface/80 rounded-md" />
                   </div>
-                  <div className="h-10 bg-cta/20 rounded-lg w-1/3 mt-4" />
+                  <div className="space-y-3">
+                    <div className="h-8 bg-primary-50/85 rounded-lg w-3/4 shimmer" />
+                    <div className="h-4 bg-surface/85 rounded w-full" />
+                    <div className="h-4 bg-surface/85 rounded w-5/6" />
+                    <div className="h-4 bg-surface/85 rounded w-2/3" />
+                    <div className="grid grid-cols-3 gap-3 mt-6">
+                      <div className="h-20 bg-primary-50/85 rounded-lg border border-primary-100/80 backdrop-blur-[1px]" />
+                      <div className="h-20 bg-primary-50/85 rounded-lg border border-primary-100/80 backdrop-blur-[1px]" />
+                      <div className="h-20 bg-primary-50/85 rounded-lg border border-primary-100/80 backdrop-blur-[1px]" />
+                    </div>
+                    <div className="h-10 bg-cta/25 rounded-lg w-1/3 mt-4" />
+                  </div>
                 </div>
               </div>
 
